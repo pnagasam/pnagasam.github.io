@@ -1,0 +1,171 @@
+/* Base styles and reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header styles */
+header {
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-image {
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+/* Content styles */
+.content {
+    margin-top: 2rem;
+}
+
+/* Contact info */
+.contact-info {
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    margin-bottom: 0.5rem;
+    display: flex;
+}
+
+.info-label {
+    min-width: 80px;
+    font-weight: 500;
+}
+
+.info-value {
+    flex: 1;
+}
+
+/* Links */
+a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Section styles */
+section {
+    margin-bottom: 3rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eaecef;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* Research and Teaching items */
+.research-item, .teaching-item, .project-item {
+    margin-bottom: 2rem;
+}
+
+.position {
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* Lists */
+ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+ul ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Skills section */
+.skills {
+    margin-top: 1rem;
+    color: #555;
+}
+
+/* Coursework section */
+.coursework-category {
+    margin-bottom: 2rem;
+}
+
+.coursework-category h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.coursework-category ul {
+    columns: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .profile-image {
+        max-width: 200px;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+    
+    .info-label {
+        margin-bottom: 0.25rem;
+    }
+    
+    .coursework-category ul {
+        columns: 1;
+    }
+}
