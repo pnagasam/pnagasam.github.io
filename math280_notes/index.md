@@ -1,3 +1,9 @@
+---
+layout: page          # or "default" / "post"
+title: "Probability Theory Notes"
+permalink: /math280_notes/
+---
+
 # Probability Theory Notes
 All notes are from Todd Kemp's incredible probability theory lectures.
 
