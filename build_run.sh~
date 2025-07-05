@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Script to convert all .md files in current directory to HTML using pandoc
+
+# Check if pandoc is installed
+if ! command -v pandoc &> /dev/null; then
+    echo "Error: pandoc is not installed or not in PATH"
+    exit 1
+fi
+
+# Find all .md files recursively
+mapfile -t md_files < <(find . -name "*.md" -type f)
+
+# Check if any .md files exist
+if [ ${#md_files[@]} -eq 0 ]; then
+    echo "No .md files found in current directory or subdirectories"
+    exit 0
+fi
+
+echo "Processing ${#md_files[@]} markdown file(s)..."
+
+# Process each .md file
+for file in "${md_files[@]}"; do
+    # Get filename without extension
+    basename="${file%.md}"
+    output_file="${basename}.html"
+    
+    echo "Converting: $file -> $output_file"
+    
+    # Run pandoc command
+    pandoc -s --katex=https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/ "$file" > "$output_file"
+    
+    # Check if conversion was successful
+    if [ $? -eq 0 ]; then
+        echo "✓ Successfully converted $file"
+    else
+        echo "✗ Failed to convert $file"
+    fi
+done

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>notes</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+</head>
+<body>
+<h1 id="probability-theory-notes">Probability Theory Notes</h1>
+<p><em>All notes are from Todd Kemp’s incredible probability theory
+lectures.</em></p>
+<h2 id="sigma-algebra"><span
+class="math inline">\sigma</span>-algebra</h2>
+<h3 id="motivation">Motivation</h3>
+<p>For a lot of natural probability spaces, having an intuitive
+probability measure on every possible subset is infeasible. For example,
+say you want a probability measure on an arbitrary sample space <span
+class="math inline">S</span> with the following properties:</p>
+<ul>
+<li><span class="math inline">\mathbb{P}(S) = 1</span></li>
+<li><span class="math inline">E \cap F = \emptyset \implies \mathbb{P}(E
+\cup F) = \mathbb{P}(E) + \mathbb{P}(F)</span></li>
+<li><span class="math inline">\{E_j\}_{j=1}^{\infty}</span> where <span
+class="math inline">E_i \cap E_j = \emptyset</span> <span
+class="math inline">\forall i, j</span> then, <span
+class="math inline">\mathbb{P}\left(\bigsqcup_{j=1}^{\infty} E_j\right)
+= \sum_{j=1}^\infty \mathbb{P}(E_j)</span></li>
+<li>If two sets are congruent, (e.g. they have the same length), then
+their probabilities should be the same</li>
+</ul>
+<p>Such a measure cannot exist on a very natural probability space such
+as <span class="math inline">\mathbb{R} \pmod{1}</span>.</p>
+<p>If such a space did exist, then we can construct <span
+class="math inline">\mathbb{R} \pmod{1}</span> through shifted copies of
+<span class="math inline">\mathbb{Q} \pmod{1}</span>. Then construct a
+set taking one element from each of those shifted copies of the
+rationals, call it <span class="math inline">\Phi</span> (<span
+class="math inline">\Phi</span> would require the Axiom of Choice).
+Since the rationals are countable, <span class="math inline">\mathbb{R}
+\pmod{1} = \bigsqcup_{r \in \mathbb{Q} \pmod{1}} (r + \Phi)</span>. But
+since all <span class="math inline">r + \Phi</span> are congruent, they
+should all have the same probability. But there’s also a countable
+number of <span class="math inline">r + \Phi</span>’s. So the measure of
+<span class="math inline">r+\Phi</span> can either be <span
+class="math inline">0</span> or <span class="math inline">\infty</span>
+meaning the measure of <span class="math inline">\mathbb{R}
+\pmod{1}</span> cannot equal <span class="math inline">1</span>.</p>
+<p>And that’s why we need <span
+class="math inline">\sigma</span>-fields! (I will use <span
+class="math inline">\sigma</span>-algebra and <span
+class="math inline">\sigma</span>-fields interchangeably). We can’t
+consider all possible subsets of our sample space. That leads to weird
+paradoxes such as the Banach Tarski paradox. We would like to restrict
+it to just the ones we care about. To make the example above work, we
+would like to ignore <span class="math inline">\Phi</span> as a possible
+measurable set.</p>
+<p>So let’s define a <span
+class="math inline">\sigma</span>-algebra.</p>
+<h3 id="definition-of-sigma-algebra">Definition of <span
+class="math inline">\sigma</span>-algebra</h3>
+<p>Take <span class="math inline">\Omega</span> to be the sample space.
+Then, <span class="math inline">\mathcal{F} \subseteq 2^\Omega</span> is
+a <span class="math inline">\sigma</span>-algebra if</p>
+<ul>
+<li><span class="math inline">\Omega \in \mathcal{F}</span></li>
+<li><span class="math inline">\forall E \in \mathcal{F}</span>, <span
+class="math inline">E^c \in \mathcal{F}</span></li>
+<li>For <span class="math inline">\{E_j\}_{j=1}^\infty</span>, where
+<span class="math inline">E_j \in \mathcal{F}</span>, <span
+class="math inline">\bigcup_{j=1}^\infty E_j \in \mathcal{F}</span></li>
+</ul>
+<p>An algebra is a <span class="math inline">\sigma</span>-algebra that
+only has finite unions rather than countable unions.</p>
+<p>Intersection of <span class="math inline">\sigma</span>-algebras is a
+<span class="math inline">\sigma</span>-algebra, and the <span
+class="math inline">\sigma</span>-algebra generated by a set is the
+intersection of all <span class="math inline">\sigma</span>-algebras
+that contain that set.</p>
+<p>I.e. <span class="math inline">\sigma(\mathcal{E}) = \bigcap_i
+\left\{\mathcal{F}_i \mid \mathcal{E} \subseteq
+\mathcal{F}_i\right\}</span></p>
+<p>One commonly used <span class="math inline">\sigma</span>-algebra is
+the Borel <span class="math inline">\sigma</span>-algebra.</p>
+<h3 id="definition-of-borel-sigma-algebra">Definition of Borel <span
+class="math inline">\sigma</span>-algebra</h3>
+<p><span class="math inline">\mathcal{B}(X) = \sigma(\text{All open
+subsets of } X)</span></p>
+<p>For <span class="math inline">X = \mathbb{R}^d</span>, it is
+generated by the set of all sets <span class="math inline">(a, b), [a,
+b], (a, b], (-\infty, a], [a, \infty), \ldots</span>.</p>
+<p>One way to check if two <span
+class="math inline">\sigma</span>-algebras are equivalent is the
+following.</p>
+<p>If <span class="math inline">\mathcal{E}_1 \subseteq
+\sigma(\mathcal{E}_2)</span> and <span class="math inline">\mathcal{E}_2
+\subseteq \sigma(\mathcal{E}_1)</span>, then <span
+class="math inline">\sigma(\mathcal{E}_1) =
+\sigma(\mathcal{E}_2)</span>. This is true as if <span
+class="math inline">\mathcal{E}_1 \subseteq
+\sigma(\mathcal{E}_2)</span>, then the complements of all elements in
+<span class="math inline">\mathcal{E}_1</span> and their countable
+unions must be in <span class="math inline">\sigma(\mathcal{E}_2)</span>
+(as <span class="math inline">\sigma(\mathcal{E}_2)</span> is itself a
+<span class="math inline">\sigma</span>-field). So that means <span
+class="math inline">\sigma(\mathcal{E}_1) \subseteq
+\sigma(\mathcal{E}_2)</span>. Applying the same logic with supposing
+<span class="math inline">\mathcal{E}_2 \subseteq
+\sigma(\mathcal{E}_1)</span>, we get the desired equality.</p>
+<h2 id="measures">Measures</h2>
+<p>Measures are designed to “measure” elements in our <span
+class="math inline">\sigma</span>-algebra. What properties should a
+function that measures elements in our <span
+class="math inline">\sigma</span>-algebra have? Intuitively, if you want
+to measure the volume of a sphere for example, you could divide the
+sphere into a bunch of smaller chunks whose volume is easy to calculate,
+and calculate the volume of the sphere by summing the volume of each of
+those smaller chunks. This is the defining property of a measure – the
+measure of a set should be the sum of the measures of any partition of
+the set.</p>
+<p>Suppose <span class="math inline">\mathcal{F}</span> is a <span
+class="math inline">\sigma</span>-algebra. A function <span
+class="math inline">\mu: \mathcal{F} \rightarrow [0, \infty]</span> is a
+measure if it is countably additive. In other words, <span
+class="math inline">\forall E \in \mathcal{F}</span>, <span
+class="math inline">\forall \{E_i\}_{i=1}^\infty</span> such that <span
+class="math inline">E = \bigsqcup_{i=1}^{\infty} E_i</span>, we have
+<span class="math inline">\mu(E) = \sum_{i=1}^\infty
+\mu(E_i)</span>.</p>
+<p>Then, <span class="math inline">(\Omega, \mathcal{F})</span> is
+called a measurable space where <span class="math inline">(\Omega,
+\mathcal{F}, \mu)</span> is a measure space.</p>
+<p>If <span class="math inline">\mu(\Omega) &lt; \infty</span>, then
+<span class="math inline">\mu</span> is a finite measure. If <span
+class="math inline">\mu(\Omega) = 1</span>, then <span
+class="math inline">\mu</span> is a probability measure where <span
+class="math inline">(\Omega, \mathcal{F}, \mu)</span> is then a
+probability space.</p>
+<p>From this definition, we get the following properties of
+measures:</p>
+<ul>
+<li><strong>Monotonicity</strong>: <span class="math inline">\mu(A) \leq
+\mu(B)</span> if <span class="math inline">A \subseteq B</span></li>
+<li><strong>Rule of Addition</strong>: <span class="math inline">\mu(A
+\cup B) + \mu(A \cap B) = \mu(A) + \mu(B)</span></li>
+<li><strong>Subadditivity</strong>: <span
+class="math inline">\mu\left(\bigcup_{n=1}^\infty B_n\right) \leq
+\sum_{n=1}^\infty \mu(B_n)</span></li>
+</ul>
+<p>The subadditivity follows from the <span
+class="math inline">\{B_n\}_{n=1}^\infty</span> not necessarily being
+disjoint leading to the overcounting of overlapping regions.</p>
+<h2 id="construction-of-measures">Construction of Measures</h2>
+<p>But how do we actually construct <span
+class="math inline">\mu</span>? <span
+class="math inline">\mathcal{F}</span> can be a very difficult set to
+work with, and therefore will be difficult to verify the properties of a
+measure on all elements of this set.</p>
+<p>To do so, we start with a simplified notion of a <span
+class="math inline">\sigma</span>-algebra, namely something called a
+semi-algebra – a much more understandable set. We can define a notion of
+a measure on this set such as a finitely additive measure. Then extend
+this finitely additive measure on the semi-algebra to a measure on the
+<span class="math inline">\sigma</span>-algebra.</p>
+</body>
+</html>
